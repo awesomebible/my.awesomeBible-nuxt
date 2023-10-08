@@ -5,71 +5,95 @@ const { auth } = useSupabaseClient()
 const redirectTo = `${useRuntimeConfig().public.baseUrl}/confirm`
 
 watchEffect(() => {
-  if (user.value) {
-    navigateTo('/home')
-  }
+    if (user.value) {
+        navigateTo('/home')
+    }
 })
 </script>
 
 <template>
     <Head title="Home" />
 
-    <header class="w-full px-6 mb-12 antialiased bg-white select-none">
-    <div class="mx-auto max-w-7xl">
-                    <nav class="relative z-50 h-24">
-            <div class="container relative flex flex-wrap items-center justify-between h-24 mx-auto font-medium border-b border-gray-200 lg:justify-center sm:px-4 md:px-2">
-                <NuxtLink as="a" href="/" class="w-1/4 py-4 pr-4 md:py-0">
-                    <span class="text-xl font-black leading-none text-gray-900 select-none logo">my.awesomeBible<span class="text-indigo-600">.</span></span>
-                </NuxtLink>
-                <div class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:w-3/4 md:absolute lg:text-base md:h-auto md:bg-transparent md:p-0 md:relative md:flex" :class="{'flex fixed': showMenu, 'hidden': !showMenu }">
-                    <div class="flex-col w-full h-auto overflow-hidden bg-white rounded-lg select-none md:bg-transparent md:rounded-none md:relative md:flex md:flex-row md:overflow-auto">
-                        <a href="/" class="inline-flex items-center w-auto h-16 px-6 text-xl font-black leading-none text-gray-900 select-none md:hidden">my.awesomeBible<span class="text-indigo-600">.</span></a>
-                        <div class="flex flex-col items-start justify-center w-full text-center md:w-2/3 md:mt-0 md:flex-row md:items-center">
-                            <a href="/" class="inline-block w-full px-6 py-2 mx-0 font-medium text-left text-indigo-600 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center">Home</a>
-                            <a href="#features" class="inline-block w-full px-6 py-2 mx-0 font-medium text-left text-gray-700 md:w-auto md:px-0 md:mx-2 hover:text-indigo-600 lg:mx-3 md:text-center">Features</a>
-                            <a href="https://changelog.awesomebible.de" class="inline-block w-full px-6 py-2 mx-0 font-medium text-left text-gray-700 md:w-auto md:px-0 md:mx-2 hover:text-indigo-600 lg:mx-3 md:text-center">Blog</a>
-                            <NuxtLink as="a" href="/kontakt" class="inline-block w-full px-6 py-2 mx-0 font-medium text-left text-gray-700 md:w-auto md:px-0 md:mx-2 hover:text-indigo-600 lg:mx-3 md:text-center">Kontakt</NuxtLink>
+    <header class="w-full px-6 mb-12 antialiased bg-base select-none">
+        <div class="mx-auto max-w-7xl">
+            <nav class="relative z-50 h-24">
+                <div
+                    class="container relative flex flex-wrap items-center justify-between h-24 mx-auto font-medium border-b border-gray-200 lg:justify-center sm:px-4 md:px-2">
+                    <NuxtLink as="a" href="/" class="w-1/4 py-4 pr-4 md:py-0">
+                        <span class="text-xl font-black leading-none text-primary-900 select-none logo">my.awesomeBible<span
+                                class="text-primary">.</span></span>
+                    </NuxtLink>
+                    <div class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:w-3/4 md:absolute lg:text-base md:h-auto md:bg-transparent md:p-0 md:relative md:flex"
+                        :class="{ 'flex fixed': showMenu, 'hidden': !showMenu }">
+                        <div
+                            class="flex-col w-full h-auto overflow-hidden bg-white rounded-lg select-none md:bg-transparent md:rounded-none md:relative md:flex md:flex-row md:overflow-auto">
+                            <a href="/"
+                                class="inline-flex items-center w-auto h-16 px-6 text-xl font-black leading-none text-gray-900 select-none md:hidden">my.awesomeBible<span
+                                    class="text-indigo-600">.</span></a>
+                            <div
+                                class="flex flex-col items-start justify-center w-full text-center md:w-2/3 md:mt-0 md:flex-row md:items-center">
+                                <a href="/"
+                                    class="inline-block w-full px-6 py-2 mx-0 font-medium text-left text-primary-content-700 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center">Home</a>
+                                <a href="#features"
+                                    class="inline-block w-full px-6 py-2 mx-0 font-medium text-left text-primary-content-700 md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center">Features</a>
+                                <a href="https://changelog.awesomebible.de"
+                                    class="inline-block w-full px-6 py-2 mx-0 font-medium text-left text-primary-content-700 md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center">Blog</a>
+                                <NuxtLink as="a" href="/kontakt"
+                                    class="inline-block w-full px-6 py-2 mx-0 font-medium text-left text-primary-content-700 md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center">
+                                    Kontakt</NuxtLink>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </nav>
-        <div class="container max-w-lg px-4 py-32 mx-auto text-left md:max-w-none md:text-center" id="">
-            <h1 class="text-5xl font-extrabold tracking-tight text-left text-gray-900 leading-tightest md:leading-10 md:text-center sm:leading-none md:text-6xl lg:text-7xl"><span class="inline md:block" id="">Deine Bibel</span> <span class="relative mt-2 text-transparent md:inline-block bg-clip-text bg-gradient-to-br from-purple-600 to-blue-500" id="">bekommt ein Upgrade!</span></h1>
-            <div class="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg" id="">Wir haben my.awesomeBible gebaut, damit du die Bibel auf deinem Level erleben kannst.</div>
-            <div class="flex flex-col items-center mt-12 text-center">
-                <span class="relative inline-flex w-full rounded-full shadow-sm md:w-auto">
-                    <a type="button" href="/#pricing" class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-lg md:w-auto hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 focus:ring-4 focus:ring-indigo-400">Worauf wartest du?</a>
-                </span>
+            </nav>
+            <div class="container max-w-lg px-4 py-32 mx-auto text-left md:max-w-none md:text-center" id="">
+                <h1
+                    class="text-5xl font-extrabold tracking-tight text-left text-primary-content leading-tightest md:leading-10 md:text-center sm:leading-none md:text-6xl lg:text-7xl">
+                    <span class="inline md:block" id="">Deine Bibel</span> <span
+                        class="relative mt-2 text-transparent md:inline-block bg-clip-text bg-gradient-to-br from-purple-600 to-blue-500"
+                        id="">bekommt ein Upgrade!</span></h1>
+                <div class="mx-auto mt-5 text-primary-content-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg" id="">
+                    Wir haben my.awesomeBible gebaut, damit du die Bibel auf deinem Level erleben kannst.
+                </div>
+                <div class="flex flex-col items-center mt-12 text-center">
+                    <span class="relative inline-flex w-full rounded-full shadow-sm md:w-auto">
+                        <a type="button" href="/#pricing" class="btn btn-lg btn-primary">Worauf wartest du?</a>
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
-</header>
-<section class="py-20 bg-white dark:bg-slate-800" id="">
-    <div class="container max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold tracking-tight text-center dark:text-white" id="features">Was wir drauf haben...</h2>
-        <p class="mt-2 text-lg text-center text-gray-700 dark:text-gray-300" id="">Eine Zusammenfassung von den wichtigsten Funktionen, die my.awesomeBible bietet:</p>
-        <div class="grid grid-cols-4 gap-8 mt-10 sm:grid-cols-8 lg:grid-cols-12 sm:px-8 xl:px-0" id="">
-            <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl bg-gradient-to-br from-purple-200 to-blue-200" id="">
-                <div class="p-3 text-white bg-indigo-500 rounded-full" id="">
-                    <Icon name="ph-book-bookmark-bold" class="w-8 h-8" />
+    </header>
+    <section class="py-20 bg-white dark:bg-slate-800" id="">
+        <div class="container max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold tracking-tight text-center dark:text-white" id="features">
+                Was wir drauf haben...
+            </h2>
+            <p class="mt-2 text-lg text-center text-gray-700 dark:text-gray-300" id="">
+                Eine Zusammenfassung von den wichtigsten Funktionen, die my.awesomeBible bietet:
+            </p>
+            <div class="grid grid-cols-4 gap-8 mt-10 sm:grid-cols-8 lg:grid-cols-12 sm:px-8 xl:px-0" id="">
+                <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl bg-gradient-to-br from-purple-200 to-blue-200"
+                    id="">
+                    <div class="p-3 text-white bg-indigo-500 rounded-full" id="">
+                        <Icon name="ph-book-bookmark-bold" class="w-8 h-8" />
+                    </div>
+                    <h4 class="text-xl font-medium text-black">Lies</h4>
+                    <p class="text-base text-center font-sans text-gray-700">Lies die Bibel so wie du möchtest: Lightmode, Darkmode, Comic Sans - alles ist dir überlassen.</p>
                 </div>
-                <h4 class="text-xl font-medium text-black">Lies!</h4>
-                <p class="text-base text-center font-sans text-gray-700">Lies die Bibel so wie du möchtest: Lightmode, Darkmode, Comic Sans - alles ist dir überlassen.</p>
-            </div>
-            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl bg-gradient-to-br from-red-200 to-orange-200">
-                <div class="p-3 text-white bg-indigo-500 rounded-full">
-                    <Icon name="ph-anchor-simple-bold" class="w-8 h-8" />
+                <div
+                    class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl bg-gradient-to-br from-red-200 to-orange-200">
+                    <div class="p-3 text-white bg-indigo-500 rounded-full">
+                        <Icon name="ph-anchor-simple-bold" class="w-8 h-8" />
+                    </div>
+                    <h4 class="text-xl font-medium text-black" id="">Merke</h4>
+                    <p class="text-base text-center font-sans text-gray-700" id="">Merke dir Verse, damit du nie wieder Gottes Botschaft an dich vergisst.</p>
                 </div>
-                <h4 class="text-xl font-medium text-black" id="">Merke!</h4>
-                <p class="text-base text-center font-sans text-gray-700" id="">Merke dir Verse, damit du nie wieder Gottes Botschaft an dich vergisst.</p>
-            </div>
 
             <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl bg-gradient-to-br from-green-200 to-blue-200">
                 <div class="p-3 text-white bg-indigo-500 rounded-full">
                     <Icon name="ph-megaphone-bold" class="w-8 h-8" />
                 </div>
-                <h4 class="text-xl font-medium text-black" id="">Teile!</h4>
+                <h4 class="text-xl font-medium text-black" id="">Teile</h4>
                 <p class="text-base text-center font-sans text-gray-700" id="">Wir haben es dir einfach gemacht, deine Gedanken mit anderen zu teilen.</p>
             </div>
 
@@ -189,7 +213,8 @@ watchEffect(() => {
                         <Icon name="ph-infinity-bold" class="w-5 h-5 mr-2 leading-7 sm:h-5 sm:w-5 md:h-6 md:w-6 dark:fill-gray-300" />
                         viele Markierungen
                     </li>
-                    <li class="inline-flex items-center w-full mb-2 ml-5 font-semibold dark:text-gray-300 text-left border-solid">
+                    <li
+                        class="inline-flex items-center w-full mb-2 ml-5 font-semibold dark:text-gray-300 text-left border-solid">
                         <Icon name="ph-check-bold" class="w-5 h-5 mr-2 leading-7 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                         alle Bibelübersetzungen
                     </li>
